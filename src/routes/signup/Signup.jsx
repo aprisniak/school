@@ -15,14 +15,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const SignUp = () => {
-    const [inputs, setInputs] = useState({});
+    const [user, setInputs] = useState({});
     const classes = useStyles();
 
     const handleInputChange = event => {
         event.persist();
-        setInputs(inputs => ({
-            ...inputs,
-            [event.target.name]: event.target.value,
+        const { name, value } = event.target;
+
+        setInputs(user => ({
+            ...user,
+            [name]: value,
         }));
     };
 
@@ -35,7 +37,7 @@ export const SignUp = () => {
                 autoComplete="off"
                 onSubmit={e => {
                     e.preventDefault();
-                    console.log(inputs);
+                    console.log(user);
                 }}
             >
                 <CardContent>
