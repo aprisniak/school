@@ -10,11 +10,11 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
-        marginTop: '32px'
-    }
+        marginTop: '32px',
+    },
 }));
 
-export function Signin() {
+export const SignIn = () => {
     const [inputs, setInputs] = useState({});
     const classes = useStyles();
 
@@ -22,7 +22,7 @@ export function Signin() {
         event.persist();
         setInputs(inputs => ({
             ...inputs,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
         }));
     };
 
@@ -75,4 +75,4 @@ export function Signin() {
             </form>
         </Card>
     );
-}
+};

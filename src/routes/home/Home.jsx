@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
-        marginTop: '32px'
-    }
+        marginTop: '32px',
+    },
 }));
 
-export function Home() {
+export const Home = () => {
     const classes = useStyles();
 
     return (
@@ -27,4 +27,4 @@ export function Home() {
             </Paper>
         </div>
     );
-}
+};

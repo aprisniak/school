@@ -30,7 +30,7 @@ const AdapterLink = React.forwardRef((props, ref) => (
     <LinkStyled innerRef={ref} {...props} />
 ));
 
-export function ButtonAppBar() {
+export const ButtonAppBar = () => {
     const classes = useStyles();
 
     return (

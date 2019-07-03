@@ -9,17 +9,17 @@ import MenuIcon from './node_modules/@material-ui/icons/Menu';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2)
+        marginRight: theme.spacing(2),
     },
     title: {
-        flexGrow: 1
-    }
+        flexGrow: 1,
+    },
 }));
 
-export function ButtonAppBar() {
+export const ButtonAppBar = () => {
     const classes = useStyles();
 
     return (
@@ -42,4 +42,4 @@ export function ButtonAppBar() {
             </AppBar>
         </div>
     );
-}
+};

@@ -2,15 +2,15 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { Home } from './home/Home';
-import { Signin } from './signin/Signin';
-import { Signup } from './signup/Signup';
+import { SignIn } from './signin/SignIn';
+import { SignUp } from './signup/SignUp';
 
 export function Routes() {
     return (
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/signin" component={Signin} />
-            <Route path="/signup" component={Signup} />
+            <Route exact path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
         </Switch>
     );
 }
