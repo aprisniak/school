@@ -14,11 +14,11 @@ import { URL } from '../../settings';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
-        marginTop: '32px',
-    },
+        marginTop: '32px'
+    }
 }));
 
-export const SignIn = () => {
+export const Signin = () => {
     const [user, setInputs] = useState({});
     const classes = useStyles();
 
@@ -28,7 +28,7 @@ export const SignIn = () => {
 
         setInputs(user => ({
             ...user,
-            [name]: value,
+            [name]: value
         }));
     };
 
@@ -37,7 +37,7 @@ export const SignIn = () => {
 
         try {
             const response = await fetch(`${URL}/users`, {
-                method: 'POST',
+                method: 'POST'
             });
 
             if (!response === 201) {

@@ -10,11 +10,11 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
-        marginTop: '32px',
-    },
+        marginTop: '32px'
+    }
 }));
 
-export const SignUp = () => {
+export const Signup = () => {
     const [user, setInputs] = useState({});
     const classes = useStyles();
 
@@ -24,7 +24,7 @@ export const SignUp = () => {
 
         setInputs(user => ({
             ...user,
-            [name]: value,
+            [name]: value
         }));
     };
 
