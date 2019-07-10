@@ -12,4 +12,6 @@ ssh -o StrictHostKeyChecking=no ubuntu@$SERVER <<EOF
     cd ui 
     yarn
     yarn build
+    docker restart school
+    docker restart proxy
 EOF
