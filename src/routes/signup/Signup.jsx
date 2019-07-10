@@ -6,6 +6,10 @@ import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import FormLabel from '@material-ui/core/FormLabel';
 
 // Instruments
 import { URL } from '../../settings';
@@ -13,11 +17,14 @@ import { URL } from '../../settings';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
-        marginTop: '32px',
+        marginTop: '32px'
     },
+    group: {
+        margin: theme.spacing(1, 0)
+    }
 }));
 
-export const Signup = () => {
+export const Signup = ({ history }) => {
     const [user, setInputs] = useState({});
     const classes = useStyles();
 
@@ -27,7 +34,7 @@ export const Signup = () => {
 
         setInputs(user => ({
             ...user,
-            [name]: value,
+            [name]: value
         }));
     };
 
@@ -38,9 +45,9 @@ export const Signup = () => {
             const response = await fetch(`${URL}/users`, {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json',
+                    'content-type': 'application/json'
                 },
-                body: JSON.stringify(user),
+                body: JSON.stringify(user)
             });
 
             if (!response === 201) {
@@ -50,6 +57,8 @@ export const Signup = () => {
             const { data } = await response.json();
 
             console.log(data);
+
+            history.push('/classes');
         } catch ({ message }) {
             console.error('Create user:', message);
         }
@@ -95,17 +104,26 @@ export const Signup = () => {
                         onChange={handleInputChange}
                         defaultValue=""
                     />
-                    <TextField
-                        fullWidth
-                        label="Sex"
-                        margin="dense"
-                        required
-                        variant="outlined"
-                        type="text"
-                        name="sex"
+                    <RadioGroup
+                        name="gender"
                         onChange={handleInputChange}
-                        defaultValue=""
-                    />
+                        className={classes.group}
+                        required
+                    >
+                        <FormLabel required component="legend">
+                            Gender
+                        </FormLabel>
+                        <FormControlLabel
+                            value="f"
+                            control={<Radio required color="primary" />}
+                            label="Female"
+                        />
+                        <FormControlLabel
+                            value="m"
+                            control={<Radio required color="primary" />}
+                            label="Male"
+                        />
+                    </RadioGroup>
                     <TextField
                         fullWidth
                         label="Password"
@@ -125,7 +143,7 @@ export const Signup = () => {
                         color="primary"
                         fullWidth
                     >
-                        Sign In
+                        Sign Up
                     </Button>
                 </CardActions>
             </form>
