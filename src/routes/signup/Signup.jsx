@@ -7,6 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+// Instruments
+import { URL } from '../../settings';
+
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
