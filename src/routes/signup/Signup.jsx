@@ -26,8 +26,6 @@ export const Signup = () => {
             ...user,
             [name]: value,
         }));
-
-        console.log(user);
     };
 
     const handleSubmit = async event => {
@@ -36,6 +34,10 @@ export const Signup = () => {
         try {
             const response = await fetch(`${URL}/users`, {
                 method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(user),
             });
 
             if (!response === 201) {
