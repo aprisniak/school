@@ -1,6 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+// Utils
+import { PrivateRoute } from '../components/private-route/PrivateRoute';
+
 import { Home } from './home/Home';
 import { Signin } from './signin/Signin';
 import { Signup } from './signup/Signup';
@@ -14,9 +17,13 @@ export function Routes() {
             <Route exact path="/" component={Home} />
             <Route exact path="/signin" component={Signin} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/classes" component={Classes} />
-            <Route exact path="/lessons/:lessonHash" component={Lessons} />
-            <Route
+            <PrivateRoute exact path="/classes" component={Classes} />
+            <PrivateRoute
+                exact
+                path="/lessons/:lessonHash"
+                component={Lessons}
+            />
+            <PrivateRoute
                 exact
                 path="/lessons/:lessonHash/videos/:videoHash"
                 component={Video}
