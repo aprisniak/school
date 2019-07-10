@@ -14,11 +14,11 @@ import { URL } from '../../settings';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
-        marginTop: '32px',
-    },
+        marginTop: '32px'
+    }
 }));
 
-export const Signin = () => {
+export const Signin = ({ history }) => {
     const [user, setInputs] = useState({});
     const classes = useStyles();
 
@@ -28,7 +28,7 @@ export const Signin = () => {
 
         setInputs(user => ({
             ...user,
-            [name]: value,
+            [name]: value
         }));
 
         console.log(user);
@@ -39,7 +39,7 @@ export const Signin = () => {
 
         try {
             const response = await fetch(`${URL}/login`, {
-                method: 'POST',
+                method: 'POST'
             });
 
             if (!response === 201) {
@@ -49,6 +49,8 @@ export const Signin = () => {
             const { data } = await response.json();
 
             console.log(data);
+
+            history.push('/classes');
         } catch ({ message }) {
             console.error('Create user:', message);
         }
