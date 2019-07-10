@@ -20,3 +20,7 @@ deploy:
     script: deploy/deploy.sh
     on:
       branch: master
+
+branches:
+  only:
+  - master

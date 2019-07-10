@@ -10,8 +10,8 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
-        marginTop: '32px'
-    }
+        marginTop: '32px',
+    },
 }));
 
 export const Signup = () => {
@@ -24,8 +24,30 @@ export const Signup = () => {
 
         setInputs(user => ({
             ...user,
-            [name]: value
+            [name]: value,
         }));
+
+        console.log(user);
+    };
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+
+        try {
+            const response = await fetch(`${URL}/users`, {
+                method: 'POST',
+            });
+
+            if (!response === 201) {
+                throw new Error('can not create user');
+            }
+
+            const { data } = await response.json();
+
+            console.log(data);
+        } catch ({ message }) {
+            console.error('Create user:', message);
+        }
     };
 
     return (
@@ -33,14 +55,19 @@ export const Signup = () => {
             <Typography variant="h5" component="h5">
                 Register
             </Typography>
-            <form
-                autoComplete="off"
-                onSubmit={e => {
-                    e.preventDefault();
-                    console.log(user);
-                }}
-            >
+            <form autoComplete="off" onSubmit={handleSubmit}>
                 <CardContent>
+                    <TextField
+                        fullWidth
+                        label="Full Name"
+                        margin="dense"
+                        required
+                        variant="outlined"
+                        type="text"
+                        name="name"
+                        onChange={handleInputChange}
+                        defaultValue=""
+                    />
                     <TextField
                         fullWidth
                         label="Email"
@@ -49,7 +76,29 @@ export const Signup = () => {
                         variant="outlined"
                         type="text"
                         name="email"
-                        onChange={event => handleInputChange(event)}
+                        onChange={handleInputChange}
+                        defaultValue=""
+                    />
+                    <TextField
+                        fullWidth
+                        label="Phone"
+                        margin="dense"
+                        required
+                        variant="outlined"
+                        type="text"
+                        name="phone"
+                        onChange={handleInputChange}
+                        defaultValue=""
+                    />
+                    <TextField
+                        fullWidth
+                        label="Sex"
+                        margin="dense"
+                        required
+                        variant="outlined"
+                        type="text"
+                        name="sex"
+                        onChange={handleInputChange}
                         defaultValue=""
                     />
                     <TextField
@@ -60,7 +109,7 @@ export const Signup = () => {
                         variant="outlined"
                         type="password"
                         name="password"
-                        onChange={e => handleInputChange(e)}
+                        onChange={handleInputChange}
                         defaultValue=""
                     />
                 </CardContent>

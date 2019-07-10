@@ -14,8 +14,8 @@ import { URL } from '../../settings';
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
-        marginTop: '32px'
-    }
+        marginTop: '32px',
+    },
 }));
 
 export const Signin = () => {
@@ -28,16 +28,18 @@ export const Signin = () => {
 
         setInputs(user => ({
             ...user,
-            [name]: value
+            [name]: value,
         }));
+
+        console.log(user);
     };
 
     const handleSubmit = async event => {
         event.preventDefault();
 
         try {
-            const response = await fetch(`${URL}/users`, {
-                method: 'POST'
+            const response = await fetch(`${URL}/login`, {
+                method: 'POST',
             });
 
             if (!response === 201) {
