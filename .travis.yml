@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "10.16.0"
+
+addons:
+  ssh_known_hosts:
+  - $SERVER
+
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-clients -y )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$DEPLOY_KEY" | base64 --decode)
+
+script:
+  -
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: deploy/deploy.sh
+    on:
+      branch: master
